@@ -1,0 +1,21 @@
+---
+name: File-LockDir
+version: 0.01
+author:
+  - Joe McMahon <mcmahon@yahoo-inc.com>
+abstract: basic filename-level lock utility
+license: perl
+requires:
+  Carp: 0
+  Class::Accessor::Fast: 0
+  Cwd: 0
+  Fcntl: 0
+  File::Basename: 0
+  File::Spec: 0
+  Sys::Hostname: 0
+  Test::More: 0
+provides:
+  File::LockDir:
+    file: lib/File/LockDir.pm
+    version: 0.01
+generated_by: Module::Build version 0.261

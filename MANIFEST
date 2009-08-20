@@ -1,0 +1,22 @@
+Build.PL
+Changes
+lib/File/LockDir.pm
+Makefile.PL
+MANIFEST
+META.yml			# Will be created by "make dist"
+README
+t/00.load.t
+t/01can.t
+t/02new.t
+t/03debug.t
+t/04miss_limit.t
+t/05interval.t
+t/06logger.t
+t/07fatal.t
+t/08logger_error.t
+t/09fatal_error.t
+t/10who_has_it.t
+t/11name2lock.t
+t/drivelock.t
+t/pod-coverage.t
+t/pod.t

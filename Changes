@@ -1,5 +1,10 @@
 Revision history for File-LockDir
 
-0.0.1  Tue Jun  6 10:39:44 2006
-       Initial release.
+0.02  Mon Dec  7 11:04:11 2020
+      Fix test failure on 5.22 and up.
+      Correct Changes version numbers.
+      Trailing whitespace cleanup.
+
+0.01  Tue Jun  6 10:39:44 2006
+      Initial release.
 

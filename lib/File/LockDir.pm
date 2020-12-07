@@ -1,6 +1,6 @@
 package File::LockDir;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use warnings;
 use strict;
@@ -84,7 +84,7 @@ sub _readlock {
     }
     else {
       croak "Can't read lock file $who_has_it: $!\n";
-    } 
+    }
   }
 
   # Lock file exists and can be read.
@@ -132,7 +132,7 @@ sub nflock {
 
     while (1) {
         last if mkdir($lockname, 0777);
-        confess "Can't get $lockname: $!" 
+        confess "Can't get $lockname: $!"
           if $missed++ > $self->miss_limit() && !-d $lockname;
 
         my($unlocked, $owner) = $self->_readlock($lockname);
@@ -140,7 +140,7 @@ sub nflock {
         sleep $self->check_sleep();
 
         # If total time to wait has been exceeded, and the lock is
-        # still held, return the current status of the lock. 
+        # still held, return the current status of the lock.
         if ($naptime && time > $start+$naptime) {
           return (undef, $owner);
         }
@@ -165,7 +165,7 @@ sub nunflock {
 
     $self->_note->("releasing lock on $lockname") if $self->debug();
     delete $self->{LockedFiles}->{$pathname};
-     
+
     return rmdir($lockname);
 }
 
@@ -177,7 +177,7 @@ sub nlock_state {
     my $who_has_it = $self->_who_has_it($lockname);
 
     # Check lock cache first.
-    return (undef, $self->{LockedFiles}->{$pathname}) 
+    return (undef, $self->{LockedFiles}->{$pathname})
       if $self->{LockedFiles}->{$pathname};
 
     # No directory - never locked.
@@ -186,7 +186,7 @@ sub nlock_state {
     # Could possibly be locked. Read the lockfile to check (if possible).
     return $self->_readlock($lockname);
 }
-     
+
 sub _name2lock {
     my($self, $pathname) = @_;
 
@@ -194,6 +194,7 @@ sub _name2lock {
     my $file = basename($pathname);
 
     $dir = getcwd() if $dir eq '.';
+    $file = '' if $file eq '.';
     my $lockname = File::Spec->catfile($dir, "$file.LOCKDIR");
     return $lockname;
 }
@@ -220,7 +221,7 @@ __END__
 
 =head1 NAME
 
-File::LockDir - basic filename-level lock utility 
+File::LockDir - basic filename-level lock utility
 
 =head1 VERSION
 
@@ -230,10 +231,10 @@ This document describes File::LockDir version 0.01
 
     use File::LockDir;
 
-  
+
 =head1 DESCRIPTION
 
-=head1 INTERFACE 
+=head1 INTERFACE
 
 =head2 new
 
@@ -243,7 +244,7 @@ Initializes the class. Returns the singleton object.
 
 Locks the supplied filename. Only $file is required.
 
-$file is the file to be locked; $nap_till is the total amount of time to 
+$file is the file to be locked; $nap_till is the total amount of time to
 wait before giving up; $locker is a name identifying the locker;
 $lockhost is the host requesting the lock.
 
@@ -273,7 +274,7 @@ You didn't supply a pathname to be locked to nflock. Fatal.
 =item C<< can't write to directory of %s >>
 
 The directory where the file resides can't be written, so the lockfile
-can't be created. 
+can't be created.
 
 =item C<< can't get %s: %s >>
 
@@ -292,7 +293,7 @@ reason shown.
 
 =item C<< releasing lock on %s >>
 
-Debug message; notes that the lock on the specified file was 
+Debug message; notes that the lock on the specified file was
 successfully released.
 
 =back

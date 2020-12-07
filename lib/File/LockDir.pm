@@ -225,7 +225,7 @@ File::LockDir - basic filename-level lock utility
 
 =head1 VERSION
 
-This document describes File::LockDir version 0.01
+This document describes File::LockDir version 0.02
 
 =head1 SYNOPSIS
 

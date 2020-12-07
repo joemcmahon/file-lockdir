@@ -1,4 +1,4 @@
-File-LockDir version 0.01
+File-LockDir version 0.02
 
 This is an object-oriented version of the file-locking recipe in 
 the perl Cookbok, version 2. 

@@ -1,21 +1,31 @@
 ---
-name: File-LockDir
-version: 0.01
+abstract: 'basic filename-level lock utility'
 author:
-  - Joe McMahon <mcmahon@yahoo-inc.com>
-abstract: basic filename-level lock utility
+  - 'Joe McMahon <mcmahon@yahoo-inc.com>'
+build_requires: {}
+configure_requires:
+  Module::Build: '0.42'
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4231, CPAN::Meta::Converter version 2.150010'
 license: perl
-requires:
-  Carp: 0
-  Class::Accessor::Fast: 0
-  Cwd: 0
-  Fcntl: 0
-  File::Basename: 0
-  File::Spec: 0
-  Sys::Hostname: 0
-  Test::More: 0
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: File-LockDir
 provides:
   File::LockDir:
     file: lib/File/LockDir.pm
-    version: 0.01
-generated_by: Module::Build version 0.261
+    version: '0.02'
+requires:
+  Carp: '0'
+  Class::Accessor::Fast: '0'
+  Cwd: '0'
+  Fcntl: '0'
+  File::Basename: '0'
+  File::Spec: '0'
+  Sys::Hostname: '0'
+  Test::More: '0'
+resources:
+  license: http://dev.perl.org/licenses/
+version: '0.02'
+x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
